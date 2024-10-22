@@ -14,7 +14,7 @@
           <p>
             Schreiben Sie eine Funktion digitSum, die die Quersumme einer übergebenen Zahl zurückgibt. Hinweis: Die
             Quersumme ist die Summe aller Ziffern einer Zahl.
-            <br /><strong>Tipp:</strong> Verwenden Sie split('').
+            <br /><strong>Tipp:</strong> Verwenden Sie split(''). 
           </p>
         </div>
       </div>
@@ -22,14 +22,17 @@
     <script>
       'use strict';
 
-      const number = 4566;
+      const getDigitSum = (n) => {
+    
+        return String(n)
+          .split('')
+          .reduce((sum, digit) => sum + Number(digit), 0);
+      };
 
-      const getDigitSum = (n) => {};
-
-      console.log(getDigitSum(4242)); //=> 12
-      console.log(getDigitSum('13')); //=> 4
-
-      //========
+    
+      console.log(getDigitSum(4242)); // => 12
+      console.log(getDigitSum('13')); // => 4
+      console.log(getDigitSum(4566)); // => 21
     </script>
   </body>
 </html>

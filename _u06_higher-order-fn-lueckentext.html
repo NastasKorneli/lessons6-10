@@ -26,54 +26,45 @@
       let names = ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
 
       //odd numbers
-      results = inputs /*.*/;
+      results = inputs.filter((n) => n % 2 !== 0);
       console.log(results); // => [ 1, 3, 5, 7, 9 ]
 
       //sum
-      result = inputs /*.*/;
+      result = inputs.reduce((sum, n) => sum + n, 0);
       console.log(result); // => 55
 
       //product
-      result = inputs /*.*/;
+      result = inputs.reduce((product, n) => product * n, 1);
       console.log(result); // => 3628800
 
       //longest word length
-      result = text.split(' '); //=> ['Hi', 'this', 'is', 'a', 'short', 'text'];
-
+      result = text.split(' ').reduce((longest, word) => Math.max(longest, word.length), 0);
       console.log(result); // => 5
 
       //longest word
-      result = text.split(' ');
+      result = text.split(' ').reduce((longest, word) => (word.length > longest.length ? word : longest), '');
+      console.log(result); // => 'short'
 
-      console.log(result); // =>'short'
-
-      //avg word length =========================
-
-      result = text.split(' '); //=> ['Hi', 'this', 'is', 'a', 'short', 'text'];
-
+      //avg word length
+      result = text.split(' ').reduce((total, word) => total + word.length, 0) / text.split(' ').length;
       console.log(result); // => 3
 
       //sort by 3rd letter
-      // ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
-
-      //sort by 3rd letter
-
       const names2 = [...names];
-      result = names2; /*.*/
+      result = names2.sort((a, b) => a[2].localeCompare(b[2]));
       console.log(result); // => [ 'Ladislaus', 'Friedlinde', 'Heribert', 'Tusnelda', 'Oswine' ]
 
       // Are there names with more than 8 letters?
-      // ['Heribert', 'Friedlinde', 'Tusnelda', 'Oswine', 'Ladislaus'];
-      result = names; /*.*/
+      result = names.some((name) => name.length > 8);
       console.log(result); // => true
 
       // Has every name at least 8 letters?
-      result = names; /*.*/
+      result = names.every((name) => name.length >= 8);
       console.log(result); // => false
 
       // What is the lowest value from the inputs?
-      // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      result = inputs; /*.*/
+      result = Math.min(...inputs);
+      console.log(result); // => 1
     </script>
   </body>
 </html>

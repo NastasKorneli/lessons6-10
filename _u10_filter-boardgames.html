@@ -25,7 +25,6 @@
             >
             <div class="input-group">
               <input type="text" class="form-control" name="game" id="input-game" placeholder="Spiel hier einfügen" />
-
               <button class="btn btn-primary" type="submit" name="btn-game">Hinzufügen</button>
             </div>
           </div>
@@ -39,7 +38,6 @@
 
       const formEl = document.querySelector('.form-game-filter');
       const gameInput = formEl.querySelector('input[name="game"]');
-
       const outputEl = document.querySelector('.output');
 
       const boardgames = [
@@ -58,12 +56,34 @@
         'Fast Flowing Trees',
       ];
 
-      const getFilteredGamesByLetterF = (listAr) => {};
+      // Функция для фильтрации игр
+      const getFilteredGamesByLetterF = (listAr) => {
+        return listAr.filter((game) => {
+          // Разбиваем название на слова
+          const words = game.split(' ');
+          // Проверяем, что все слова начинаются с "F" и есть минимум 2 слова
+          return words.length >= 2 && words.every(word => word.startsWith('F'));
+        });
+      };
 
       const filteredGames = getFilteredGamesByLetterF(boardgames);
       console.log(filteredGames); //=> ['Funny Friends', 'Fast Flowing Forest Fellers', 'Fearsome Floors']
 
-      // ===== Beispiel mit Formular
+      // Отображаем результат на странице
+      outputEl.textContent = `Gefilterte Spiele: ${filteredGames.join(', ')}`;
+
+      // ===== Пример с добавлением через форму
+      formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const newGame = gameInput.value.trim();
+        if (newGame) {
+          boardgames.push(newGame);
+          const updatedFilteredGames = getFilteredGamesByLetterF(boardgames);
+          outputEl.textContent = `Gefilterte Spiele: ${updatedFilteredGames.join(', ')}`;
+          gameInput.value = ''; // очищаем поле ввода
+        }
+      });
     </script>
   </body>
 </html>

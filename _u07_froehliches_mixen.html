@@ -29,32 +29,27 @@
           <li>
             Schreiben Sie eine Funktion, hasIngredient, die true zurückgibt, wenn eine angegebene Zutat in einer
             Rezeptliste vorhanden ist. Rufen Sie Ihre Funktion mit Maracujsasaft und Honolulu Flip auf.<br />
-            <span><strong>Javascript</strong></span
-            ><br />
-            <code
-              >'use strict'<br />
+            <span><strong>Javascript</strong></span><br />
+            <code>
+              'use strict'<br />
               let hasIngredient = (listOfIngredients, searchedIngredient) => /* ??? */ <br />
               let honoluluFlip = <br />[ 'Maracuja Juice', <br />
               'Pineapple Juice', <br />
               'Lemon Juice', <br />'Grapefruit Juice', <br />'Crushed Ice' ]<br />
-              console.log(hasIngredient(honoluluFlip, 'Maracuja Juice')) // => true</code
-            >
+              console.log(hasIngredient(honoluluFlip, 'Maracuja Juice')) // => true
+            </code>
           </li>
           <li>
             So richtig sinnvoll ist unsere Funktion noch nicht. Viel hilfreicher wäre es, wenn wir eine Funktion hätten,
             die anhand unserer vorhandenen Zutaten herausfindet, ob wir den Cocktail auch tatsächlich machen können.
             Dafür benötigen Sie die komplette Liste Ihrer vorhandenen Zutaten (ingredientsFromMyBar). Sie möchten
             wissen, ob Sie alle Zutaten vorrätig haben, die Sie zum Mixen des Cocktails benötigen.<br />
-            <span><strong>Javascript</strong></span
-            ><br />
-            <code
-              >'use strict'<br />
-
+            <span><strong>Javascript</strong></span><br />
+            <code>
+              'use strict'<br />
               let isMixableWith = (cocktailRecipe, availableIngredients) => /* ??? */<br />
-
               let hasIngredient = (listOfIngredients, searchedIngredient) =><br />
               listOfIngredients.includes(searchedIngredient)<br />
-
               let honoluluFlip = [<br />
               'Maracuja Juice',<br />
               'Pineapple Juice',<br />
@@ -76,9 +71,8 @@
               'Limes',<br />
               'Lemons'<br />
               ]<br />
-
               //honoluluFlip isMixableWith ingredientsFromMyBar?<br />
-              console.log(isMixableWith(honoluluFlip, ingredientsFromMyBar)) // => true<br />
+              console.log(isMixableWith(honoluluFlip, ingredientsFromMyBar)) // => true
             </code>
           </li>
         </ol>
@@ -92,13 +86,25 @@
     <script>
       'use strict';
 
-      const recipeHonoluluFlip = [
-        'Maracuja Juice', //
+    
+      const hasIngredient = (listOfIngredients, searchedIngredient) => {
+        return listOfIngredients.includes(searchedIngredient);
+      };
+
+      const honoluluFlip = [
+        'Maracuja Juice',
         'Pineapple Juice',
         'Lemon Juice',
         'Grapefruit Juice',
         'Crushed Ice',
       ];
+
+      console.log(hasIngredient(honoluluFlip, 'Maracuja Juice')); // => true
+
+  
+      const isMixableWith = (cocktailRecipe, availableIngredients) => {
+        return cocktailRecipe.every((ingredient) => hasIngredient(availableIngredients, ingredient));
+      };
 
       const ingredientsFromMyBar = [
         'Pineapple',
@@ -115,7 +121,7 @@
         'Lemons',
       ];
 
-      const hasIngredient = (listOfIngredients, searchedIngredient) => {};
+      console.log(isMixableWith(honoluluFlip, ingredientsFromMyBar)); // => true
     </script>
   </body>
 </html>

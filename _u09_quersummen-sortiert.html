@@ -21,14 +21,24 @@
     <script>
       'use strict';
 
+   
+      const getDigitSum = (n) => {
+        return String(n)
+          .split('')
+          .reduce((sum, digit) => sum + Number(digit), 0);
+      };
+
+     
+      const getSortedArrayByDigitSum = (numbers) => {
+        return numbers.slice().sort((a, b) => getDigitSum(a) - getDigitSum(b));
+      };
+
       const numbers = [99, 5, 8, 12, 111, 123];
 
-      const getDigitSum = (n) => {};
-
-      const getSortedArrayByDigitSum = (numbers) => {};
-
-      console.log(getSortedArrayByDigitSum(numbers)); //=> [12, 111, 5, 123, 8, 99]
+     
+      console.log(getSortedArrayByDigitSum(numbers)); // => [12, 111, 5, 123, 8, 99]
       console.log(numbers);
     </script>
   </body>
 </html>
+
